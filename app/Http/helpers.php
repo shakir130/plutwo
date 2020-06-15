@@ -1,11 +1,10 @@
 <?php
-
+use Request;
 // Get User's Geolocation
 
 function get_local_time(){
-
     $ip = file_get_contents("http://ipecho.net/plain");
-    $url = 'http://ip-api.com/json/'.$ip;
+    $url = 'http://ip-api.com/json/'.Request::ip();
     $tz = file_get_contents($url);
     $tz = json_decode($tz,true)['timezone'];
 
